@@ -1,0 +1,18 @@
+#! python3
+import webbrowser, sys, pyperclip
+sys.argv #['mapit.py', 'Nieuwe', 'ebbingestraat', '88']
+
+#Check if the command line arguements were passed
+
+if len(sys.argv) > 1:
+    #['mapit.py', 'Nieuwe', 'ebbingestraat', '73'] -> 'Nieuwe ebbingestraat 88'
+        address = ' '.join(sys.argv[1:])
+else:
+        address = pyperclip.paste()
+
+
+#https://www.google.com/maps/place/<ADDRESS>
+webbrowser.open('https://www.google.com/maps/place/' + address)
+
+
+        
