@@ -1,0 +1,32 @@
+
+#! python3
+import re, pyperclip
+
+numRegex = re.compile (r ''' 
+
+(
+(\d\d\d) | (\(\d\d\d)?            #country code
+(\s|-)                            #dash or space
+\d\d\d                            #2nd part of number
+(\s|-) 
+(\d\d\d\d) | (ext(\.)?\sx) | (\d{2-5})
+)''', re.VERBOSE)
+
+emRegex = re.compile (r'''        #email format omar@gmail.com
+[a-zA-z0-9.+_]+                   #omar 
+@                                 #@
+[a-zA-z0-9.+_]+ ''', re.VERBOSE)  #gmail.com
+
+
+text = pyperclip.paste()
+extpnum = numRegex. findall(text)
+allnums = []
+
+for phonenum in extpnum:
+ allnums.append(phonenum[0])
+
+'\n'.join(allnums)
+'\n'.join(emRegex)
+
+print(allnums)
+print(emRegex)
